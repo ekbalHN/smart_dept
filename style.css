@@ -1,0 +1,496 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary-red: #e63946;
+    --dark-red: #5c1515;
+    --soft-pink: #fff0f1;
+    --text-dark: #2b2b2b;
+    --text-light: #f5f5f5;
+    --text-brown: #4f1e1e;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Crucial for responsive layouts */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.soft-dark{
+    background-color: #b8a5a7;
+    color: var(--text-dark);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5edee;
+    /* Fallback */
+    /* background: linear-gradient(135deg, #fff0f1 0%, #fce4ec 100%); Optional gradient from your code */
+    color: var(--text-dark);
+    overflow-x: hidden;
+    /* Prevents side scroll on mobile */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Your Existing Styles --- */
+img {
+    max-width: 100%;
+    height: 65px;
+    display: block;
+    border-radius: 50%;
+}
+
+.admin-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1bbbb;
+    box-shadow: 5px 6px 8px rgba(241, 21, 17, 0.1);
+    background-color: #e9cecb;
+    color: #342626;
+    font-weight: 500;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+}
+
+/* --- Mobile Responsiveness Logic --- */
+@media (max-width: 768px) {
+
+    /* Shrink the logo for small screens */
+    img {
+        height: 50px;
+    }
+
+    /* Adjust the admin badge for smaller viewports */
+    .admin-badge {
+        font-size: 16px;
+        padding: 8px;
+        margin-top: 10px;
+        /* Space it out when stacked */
+        width: 100%;
+        /* Make it full width on mobile dropdown */
+    }
+
+    /* Make the dropdown menu full width on mobile */
+    .dropdown-menu {
+        min-width: 100% !important;
+        box-shadow: none;
+        border-top: 1px solid #eee;
+    }
+
+    .dropdown-item {
+        padding: 15px 20px;
+        /* Larger touch targets for mobile users */
+    }
+}
+
+/* Hover & Transitions (From your original code) */
+.nav-item:hover .admin-badge,
+.admin-badge:hover {
+    background-color: #756868;
+    color: #5d0909;
+    border-color: #494e53;
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-top: 10px !important;
+    min-width: 320px;
+}
+
+.dropdown-item {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    padding: 12px 24px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 4. The Hover Effect */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #fcfcfc;
+    /* Almost white */
+    color: #000;
+    /* This creates a formal "tab" effect on the left */
+    border-left: 3px solid #8B4513;
+    /* Matches your 'text-brown' theme */
+    padding-left: 28px;
+    /* Slight movement to the right for interaction feedback */
+}
+.grow {
+    color: #cc9d9d;
+    font-weight: bold;
+}
+/* .lead {
+    font-weight: 400;
+    text-align: left;
+    font-family: sans-serif;
+} */
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+.hero-section {
+    background: linear-gradient(180deg, #ffffff 0%, var(--soft-pink) 100%);
+    padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3.0rem;
+    font-weight: 400;
+    color: #4a3030;
+    text-align: left;
+    max-width: 100%;
+}
+
+.hero-subtitle {
+    font-size: 2.0rem;
+    font-weight: 600;
+    text-align: left;
+    color: #574747;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 60px;
+    /* Default desktop size */
+    height: auto;
+    object-fit: contain;
+}
+/* Base Glow Style */
+.glow-base {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(235, 78, 78, 0.4) 0%, transparent 70%);
+    /* Lowered opacity slightly for subtlety */
+    filter: blur(50px);
+    z-index: 1;
+    /* Behind text (container has z-index 2) */
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* Top Right Position */
+.glow-top-right {
+    top: 140px;
+    /* Peeking in from the top */
+    right: 125px;
+    /* Peeking in from the right */
+}
+
+/* Bottom Left Position */
+.glow-bottom-left {
+    bottom: -50px;
+    /* Aligned to bottom */
+    left: -50px;
+    /* Aligned to left */
+    top: auto;
+    /* Reset 'top' just in case */
+}
+
+.glow-right {
+    right: 25px;
+    /* Aligned to left */
+    top: 550px;
+    /* Reset 'top' just in case */
+}
+
+.glow-left {
+    bottom: 400px;
+    /* Aligned to bottom */
+    left: 25px;
+    /* Aligned to left */
+    top: auto;
+    /* Reset 'top' just in case */
+}
+/* =========================================
+   2. TYPOGRAPHY
+   ========================================= */
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    color: var(--primary-red);
+    font-size: 3.5rem;
+    text-shadow: 0 0 20px #fff, 0 0 30px #be5ffa;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--dark-red);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: #f9f2f2;
+}
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #eee9e9;
+    padding: 10px;
+}
+
+h5 {
+    font-size: 1.5em;
+    color: #ef1414;
+    text-align: center;
+}
+
+.title-text {
+    font-weight: bold;
+    font-size: 3.2rem;
+    min-width: fit-content;
+    padding: 2px 0;
+    LINE-HEIGHT: 55px;
+
+    /* 1. Define the gradient direction and colors */
+    background: linear-gradient(to right, rgb(222, 74, 74), #aa8989);
+
+    /* 2. Clip the background to the text shape */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: italic;
+}
+
+
+
+.section-heading {
+    color: #3f1717;
+}
+
+.section-title {
+    color: #413737;
+    font-weight: 500;
+    font-size: 32px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: #413737;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: 'Lucida Sans';
+    text-align: center;
+}
+
+/* =========================================
+   3. LIVE INDICATOR
+   ========================================= */
+.live-indicator {
+    height: 10px;
+    width: 10px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+.card-title {
+    color: #3f1717;
+    font-weight: 500;
+    font-size: 20px;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+//* ======================= */
+/* Photo Frame Styling */
+/* ======================= */
+
+.member-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Ensure the image container is a flex parent for vertical alignment */
+.member-card .img-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-card .img-frame img {
+    /* Removed position: absolute to keep it in the layout flow */
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    padding: 5px;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect: Scale image and lift card slightly */
+.member-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
+    /* transform: translateY(-5px); */
+}
+
+.member-card:hover .img-frame img {
+    transform: scale(1.08);
+}
+
+.member-card h5 {
+    margin-top: 0;
+    /* Reset for horizontal alignment */
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+/* Custom spacing for the details section */
+.member-card p {
+    margin-bottom: 2px;
+    line-height: 1.4;
+}
+
+.member-card .badge {
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 5px 10px;
+}
+
+/* Background Section styling */
+.project-details {
+    background-color: #fcfcfc;
+}
+/* =========================================
+   5. PROFILE & IMAGES
+   ========================================= */
+.profile-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+
+.outer-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #46686d 0%, #f9f0f1 100%);
+    z-index: 1;
+}
+
+.inner-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 81%;
+    height: 81%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #847070 0%, #e7b0be 100%);
+    box-shadow: 0 10px 20px rgba(122, 96, 102, 0.3);
+    z-index: 2;
+}
+
+.character-image {
+    position: absolute;
+    z-index: 3;
+    height: 118%;
+    width: auto;
+    max-width: 200%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+}
+/* Neon Cyan Styling for Header Clock */
+.text-cyan {
+    color: #00f2ff !important;
+}
+.img-support {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 5px rgba(77, 69, 69, 0.1);
+}
+
+.header-digital-clock {
+    border-left: 4px solid #ded8d8;
+    padding-left: 15px;
+}
+
+/* Red Pulsing Live Indicator from your proposal logic */
+.live-indicator {
+    height: 20px;
+    width: 20px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0px 0px 20px #f72222;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
